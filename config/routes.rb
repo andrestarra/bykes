@@ -1,5 +1,12 @@
 Rails.application.routes.draw do
-  devise_for :users, path: 'users'
+  devise_for :users
   get 'home/index'
-  root 'home#index'
+  devise_scope :user do
+    authenticated :user do
+      root 'home#index'
+    end
+    unauthenticated do
+      root 'devise/sessions#new'
+    end
+  end
 end
