@@ -68,3 +68,4 @@ gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 # Added gems
 gem 'devise'
 gem 'rubocop', '~> 0.70.0', require: false
+gem 'simple_form'
