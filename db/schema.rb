@@ -15,19 +15,21 @@ ActiveRecord::Schema.define(version: 2019_05_29_164458) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "bikes", force: :cascade do |t|
-    t.string "serial_number"
-    t.string "state"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "stations", force: :cascade do |t|
     t.string "address"
     t.string "total_positions"
     t.string "available_positions"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+  
+  create_table "bikes", force: :cascade do |t|
+    t.string "serial_number"
+    t.string "state"
+    t.bigint "station_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["station_id"], name: "index_bikes_on_station_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -46,4 +48,5 @@ ActiveRecord::Schema.define(version: 2019_05_29_164458) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "bikes", "stations"
 end
