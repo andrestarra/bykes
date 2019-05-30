@@ -1,14 +1,12 @@
-# frozen_string_literal: true
-
-# Stations Controller
 class StationsController < ApplicationController
-  before_action :find_station, only: %i[edit update]
+  before_action :find_station, only: [:edit, :update]
 
   def new
     @station = Station.new
   end
 
-  def edit; end
+  def edit
+  end
 
   def create
     @station = Station.new(station_params)
