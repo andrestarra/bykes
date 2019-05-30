@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  plan: MyString
+  code: MyString
+  user: one
+  station: one
+
+two:
+  plan: MyString
+  code: MyString
+  user: two
+  station: two
