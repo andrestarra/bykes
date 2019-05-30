@@ -1,0 +1,6 @@
+<%= simple_form_for @bike do |f| %>
+  <%= f.input :serial_number %>
+  <%= f.input :state %>
+  <%= f.input :station, collection: Station.all, label_method: :address, value_method: :id, label: 'Station', include_blank: 'Select a station' %>
+  <%= f.button :submit %>
+<% end %>
