@@ -1,12 +1,14 @@
+# frozen_string_literal: true
+
+# Bikes Controller
 class BikesController < ApplicationController
-  before_action :find_bike, only: [:edit, :update]
+  before_action :find_bike, only: %i[edit update]
 
   def new
     @bike = Bike.new
   end
 
-  def edit
-  end
+  def edit; end
 
   def create
     @bike = Bike.new(bike_params)
