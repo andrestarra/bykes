@@ -2,7 +2,7 @@
 
 require 'test_helper'
 
-class StationTest < ActiveSupport::TestCase
+class BikeTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

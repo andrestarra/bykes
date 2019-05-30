@@ -1,5 +1,5 @@
 # frozen_string_literal: true
 
-# Home Helper
-module HomeHelper
+# Bikes Helper
+module BikesHelper
 end
