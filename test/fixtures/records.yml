@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  ends_at: 2019-05-31 16:59:04
+  rental: one
+  bike: one
+  station: one
+
+two:
+  ends_at: 2019-05-31 16:59:04
+  rental: two
+  bike: two
+  station: two
