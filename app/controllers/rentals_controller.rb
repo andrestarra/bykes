@@ -1,4 +1,8 @@
 class RentalsController < ApplicationController
+  def show
+    @rental = Rental.find(params[:id])
+  end
+
   def new
     @rental = Rental.new
   end
@@ -17,6 +21,6 @@ class RentalsController < ApplicationController
   private
 
   def rental_params
-    params.require(:rental).permit(:plan, :code, :station_id)
+    params.require(:rental).permit(:plan)
   end
 end

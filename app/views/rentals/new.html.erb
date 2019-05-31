@@ -2,7 +2,5 @@
 
 <%= simple_form_for @rental do |f| %>
   <%= f.input :plan %>
-  <%= f.input :code %>
-  <%= f.input :station_id, collection: Station.all, prompt: 'Select your station', label_method: :address, value_method: :id %>
   <%= f.button :submit %>
 <% end %>
