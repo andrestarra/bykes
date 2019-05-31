@@ -28,10 +28,8 @@ ActiveRecord::Schema.define(version: 2019_05_30_212700) do
     t.string "plan"
     t.string "code"
     t.bigint "user_id"
-    t.bigint "station_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["station_id"], name: "index_rentals_on_station_id"
     t.index ["user_id"], name: "index_rentals_on_user_id"
   end
 
@@ -60,6 +58,5 @@ ActiveRecord::Schema.define(version: 2019_05_30_212700) do
   end
 
   add_foreign_key "bikes", "stations"
-  add_foreign_key "rentals", "stations"
   add_foreign_key "rentals", "users"
 end
