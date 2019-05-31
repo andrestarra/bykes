@@ -11,4 +11,5 @@ Rails.application.routes.draw do
   end
   resources :stations
   resources :bikes
+  resources :rentals
 end
