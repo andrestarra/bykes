@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  devise_for :admins
+  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   devise_for :users
   get 'home/index'
   devise_scope :user do
@@ -9,7 +11,8 @@ Rails.application.routes.draw do
       root 'devise/sessions#new'
     end
   end
-  resources :stations
-  resources :bikes
   resources :rentals
+  scope '/admin' do
+    resources :stations, :bikes
+  end
 end
