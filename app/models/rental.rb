@@ -1,5 +1,6 @@
 class Rental < ApplicationRecord
   belongs_to :user
+  has_one :record
   before_save :unique_code
 
   protected
