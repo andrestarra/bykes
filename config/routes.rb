@@ -10,7 +10,8 @@ Rails.application.routes.draw do
       root 'devise/sessions#new'
     end
   end
-  resources :stations
-  resources :bikes
   resources :rentals
+  scope '/admin' do
+    resources :stations, :bikes
+  end
 end
