@@ -15,7 +15,5 @@ Rails.application.routes.draw do
     root 'home#index'
   end
   resources :rentals
-  scope '/admin' do
-    resources :stations, :bikes
-  end
+  resources :stations, only: [:index]
 end
