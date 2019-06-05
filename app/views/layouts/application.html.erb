@@ -11,7 +11,7 @@
   </head>
 
   <body>
-    <%- if user_signed_in? %>
+    <%- if user_signed_in? || admin_signed_in? %>
       <nav class="navbar navbar-light bg-light">
         <%= link_to 'Bikes', root_path %>
         <ul class="nav justify-content-end">
@@ -21,6 +21,10 @@
             </li>
             <li class="nav-item">
               <%= link_to ' Exit', destroy_user_session_path, method: :delete, class: 'btn btn-danger btn-sm m-1' %>
+            </li>
+          <% elsif admin_signed_in? %>
+            <li class="nav-item">
+              <%= link_to ' Exit', destroy_admin_session_path, method: :delete, class: 'btn btn-danger btn-sm m-1' %>
             </li>
           <% end %>
         </ul>

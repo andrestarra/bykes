@@ -2,6 +2,7 @@
 
 class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
+  before_action :authneticate_any!
 
   protected
 
@@ -11,6 +12,14 @@ class ApplicationController < ActionController::Base
     end
     devise_parameter_sanitizer.permit(:account_update) do |user|
       user.permit(:first_name, :last_name, :identification, :email, :address, :password, :password_confirmation)
+    end
+  end
+
+  def authneticate_any!
+    if admin_signed_in?
+      true
+    else
+      authenticate_user!
     end
   end
 end
