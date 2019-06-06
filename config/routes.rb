@@ -7,4 +7,5 @@ Rails.application.routes.draw do
   resources :stations, only: [:index, :show] do
     resources :rentals
   end
+  resources :records
 end
