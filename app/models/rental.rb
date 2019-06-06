@@ -2,7 +2,10 @@ class Rental < ApplicationRecord
   belongs_to :user
   belongs_to :station
   has_one :record
+  
   before_save :unique_code
+
+  scope :my_rentals, ->(current_user) { where(user_id: current_user.id) }
 
   protected
 

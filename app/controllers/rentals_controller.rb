@@ -1,4 +1,8 @@
 class RentalsController < ApplicationController
+  def index
+    @rentals = Rental.my_rentals(current_user)
+  end
+
   def show
     @station = Station.find(params[:station_id])
     @rental = @station.rentals.find(params[:id])

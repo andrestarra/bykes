@@ -5,7 +5,8 @@ Rails.application.routes.draw do
   get 'home/index'
   root 'home#index'
   resources :stations, only: [:index, :show] do
-    resources :rentals
+    resources :rentals, except: [:index]
   end
   resources :records
+  resources :rentals, only: [:index]
 end
