@@ -2,7 +2,7 @@
 
 <div class="w-25">
   <%= simple_form_for [ @station, @station.rentals.build ] do |f| %>
-    <%= f.input :plan %>
+    <%= f.input :plan, collection: 1..24, prompt: 'How many hours?' %>
     <%= f.button :submit, class: 'btn btn-primary' %>
   <% end %>
 </div>
