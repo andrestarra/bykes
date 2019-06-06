@@ -1,18 +1,11 @@
 class RentalsController < ApplicationController
-  def show
-    @rental = Rental.find(params[:id])
-  end
-
-  def new
-    @rental = Rental.new
-  end
-
   def create
-    @rental = Rental.new(rental_params)
+    @station = Station.find(params[:station_id])
+    @rental = @station.rentals.build(rental_params)
     @rental.user_id = current_user.id
 
     if @rental.save
-      redirect_to @rental
+      redirect_to @rental, success: 'Rental was successfully!'
     else
       render 'new'
     end

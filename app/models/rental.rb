@@ -1,5 +1,6 @@
 class Rental < ApplicationRecord
   belongs_to :user
+  belongs_to :station
   has_one :record
   before_save :unique_code
 

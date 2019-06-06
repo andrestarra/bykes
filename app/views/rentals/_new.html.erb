@@ -1,0 +1,8 @@
+<h1>New Rental</h1>
+
+<div class="w-25">
+  <%= simple_form_for [ @station, @station.rentals.build ] do |f| %>
+    <%= f.input :plan %>
+    <%= f.button :submit, class: 'btn btn-primary' %>
+  <% end %>
+</div>
