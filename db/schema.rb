@@ -78,8 +78,7 @@ ActiveRecord::Schema.define(version: 2019_06_07_150210) do
 
   create_table "stations", force: :cascade do |t|
     t.string "address"
-    t.string "total_positions"
-    t.string "available_positions"
+    t.string "available_bikes"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
