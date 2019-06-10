@@ -6,6 +6,8 @@ class Bike < ApplicationRecord
   validates :serial_number, presence: true
   validates :state, presence: true
 
+  scope :bikes_by_station, ->(station) { where(station_id: station) }
+
   protected
 
   def update_station_owner
