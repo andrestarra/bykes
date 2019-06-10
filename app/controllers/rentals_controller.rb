@@ -12,7 +12,7 @@ class RentalsController < ApplicationController
     @station = Station.find(params[:station_id])
     @rental = @station.rentals.build(rental_params)
     @rental.user_id = current_user.id
-
+    
     if @rental.save
       redirect_to station_rental_path(@station, @rental), success: 'Rental was successfully!'
     else

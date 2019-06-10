@@ -15,13 +15,8 @@ class RecordsController < ApplicationController
   end
 
   def create
-    rental = Rental.find_by!(code: record_params[:rental_code])
     @record = Record.new(record_params)
-    @record.rental_id = rental.id
-    hrs = (rental.plan).to_i
-    @record.ends_at = DateTime.now + hrs.hours
-    @record.station_id = rental.station_id
-
+    
     if @record.save
       redirect_to @record
     else
