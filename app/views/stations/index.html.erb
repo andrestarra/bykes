@@ -13,7 +13,7 @@
       <tr>
         <td><%= station.address %></td>
         <td><%= station.available_bikes %></td>
-        <td><%= link_to 'Select', station_path(station), class: 'btn btn-success btn-sm' %></td>
+        <td><%= link_to 'Select', new_station_rental_path(station), class: 'btn btn-success btn-sm' %></td>
       </tr>
     <% end %>
   </tbody>

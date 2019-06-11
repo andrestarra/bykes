@@ -12,7 +12,7 @@ class Record < ApplicationRecord
     if Rental.exists?(code: self.rental_code)
       rental = Rental.find_by(code: self.rental_code)
       self.rental_id = rental.id
-      hrs = (rental.plan).to_i
+      hrs = rental.hours
       self.ends_at = DateTime.now + hrs.hours
       self.station_id = rental.station_id
     else

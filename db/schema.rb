@@ -55,7 +55,7 @@ ActiveRecord::Schema.define(version: 2019_06_07_150210) do
   end
 
   create_table "rentals", force: :cascade do |t|
-    t.string "plan"
+    t.integer "hours"
     t.string "code"
     t.bigint "user_id"
     t.bigint "station_id"
