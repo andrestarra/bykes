@@ -3,7 +3,7 @@ class Record < ApplicationRecord
   belongs_to :bike
   belongs_to :station
 
-  validates :rental_code, presence: true
+  validates :rental_code, presence: true, uniqueness: true
   validate :rental_code_existence
 
   protected

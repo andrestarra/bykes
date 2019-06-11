@@ -1,4 +1,9 @@
 RailsAdmin.config do |config|
+  config.model Station do
+    configure :available_bikes do
+      read_only true
+    end
+  end
 
   ### Popular gems integration
 

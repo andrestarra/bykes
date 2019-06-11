@@ -16,7 +16,6 @@ class RecordsController < ApplicationController
 
   def create
     @record = Record.new(record_params)
-    
     if @record.save
       redirect_to @record
     else

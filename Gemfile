@@ -66,11 +66,12 @@ end
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 
 # Added gems
-gem 'aasm'
 gem 'bootstrap', '~> 4.3.1'
+gem 'cancancan'
 gem 'devise'
 gem 'jquery-rails'
 gem 'rails_admin', '~> 1.3'
+gem 'rails_admin_aasm'
 gem "rolify"
 gem 'rubocop', '~> 0.70.0', require: false
 gem 'simple_form'

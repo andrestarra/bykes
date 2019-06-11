@@ -5,6 +5,8 @@ class Rental < ApplicationRecord
   
   before_save :unique_code
 
+  validates :code, uniqueness: true
+
   scope :my_rentals, ->(current_user) { where(user_id: current_user.id) }
 
   protected
