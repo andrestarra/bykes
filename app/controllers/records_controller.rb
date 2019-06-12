@@ -39,7 +39,7 @@ class RecordsController < ApplicationController
   private
 
   def record_params
-    params.require(:record).permit(:rental_code, :bike_id)
+    params.require(:record).permit(:rental_code)
   end
 
   def find_record

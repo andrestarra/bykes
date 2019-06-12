@@ -3,7 +3,6 @@
 <div class="container w-50">
   <%= simple_form_for @record do |f| %>
     <%= f.input :rental_code %>
-    <%= f.input :bike_id, collection: Bike.bikes_by_station(@record.station_id), label_method: :serial_number, value_method: :id, label: 'Bike', include_blank: 'Select a bike' %>
-    <%= f.button :submit %>
+    <%= f.button :submit, class: 'btn btn-primary' %>
   <% end %>
 </div>
