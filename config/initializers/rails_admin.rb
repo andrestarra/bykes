@@ -5,6 +5,12 @@ RailsAdmin.config do |config|
     end
   end
 
+  config.model Bike do
+    configure :state do
+      read_only true
+    end
+  end
+
   ### Popular gems integration
 
   ## == Devise ==

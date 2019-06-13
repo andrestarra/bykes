@@ -3,22 +3,15 @@ class Record < ApplicationRecord
   belongs_to :bike
   belongs_to :station
 
-  before_validation :assign_station, :assign_bike
+  before_validation :assign_rental, :assign_station, :assign_bike
   before_save :assign_hours
 
   validates :rental_code, presence: true, uniqueness: true
-  validate :rental_code_exist
 
   protected
 
   def rental_code_exist
-    if Rental.exists?(code: self.rental_code)
-      assign_rental
-      return true
-    else
-      errors.add(:rental_code, 'does not exist. Try another!')
-      return false
-    end
+    Rental.exists?(code: self.rental_code)
   end
 
   def rental_of_the_code
@@ -26,12 +19,11 @@ class Record < ApplicationRecord
   end
 
   def assign_rental
-    self.rental_id = rental_of_the_code.id
-  end
-
-  def assign_hours
-    hrs = self.rental.hours
-    self.ends_at = DateTime.now + hrs.hours
+    if rental_code_exist
+      self.rental_id = rental_of_the_code.id
+    else
+      errors.add(:rental_code, 'does not exist. Try another!')
+    end
   end
 
   def assign_station
@@ -47,6 +39,12 @@ class Record < ApplicationRecord
   def assign_bike
     if rental_code_exist
       self.bike_id = bike_station.id
+      self.bike.rent!
     end
+  end
+
+  def assign_hours
+    hrs = self.rental.hours
+    self.ends_at = DateTime.now + hrs.hours
   end
 end

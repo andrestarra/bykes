@@ -288,6 +288,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  aasm
   bootsnap (>= 1.1.0)
   bootstrap (~> 4.3.1)
   byebug
