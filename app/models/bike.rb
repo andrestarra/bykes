@@ -2,9 +2,9 @@ class Bike < ApplicationRecord
   include AASM
 
   has_many :records
-  belongs_to :station
+  belongs_to :station, counter_cache: :available_bikes
 
-  after_commit :update_stations
+  # after_commit :update_stations
 
   validates :serial_number, presence: true
 
@@ -23,12 +23,12 @@ class Bike < ApplicationRecord
     end
   end
 
-  protected
+  # protected
 
-  def update_stations
-    Station.all.each do |station|
-      quantity = station.bikes.count
-      station.update(available_bikes: quantity)
-    end
-  end
+  # def update_stations
+  #   Station.all.each do |station|
+  #     quantity = station.bikes.count
+  #     station.update(available_bikes: quantity)
+  #   end
+  # end
 end

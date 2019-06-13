@@ -1,7 +1,7 @@
 class Rental < ApplicationRecord
   belongs_to :user
   belongs_to :station
-  has_one :record
+  has_one :record, dependent: :destroy
   
   before_save :unique_code
 
