@@ -8,5 +8,6 @@ Rails.application.routes.draw do
     resources :rentals, except: [:index]
   end
   resources :records
+  put '/records/:id/finalize', to: 'records#finalize'
   resources :rentals, only: [:index]
 end

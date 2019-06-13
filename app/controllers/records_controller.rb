@@ -7,11 +7,13 @@ class RecordsController < ApplicationController
   def show
   end
 
-  def new
-    @record = Record.new
+  def finalize
+    @record.finalize!
+    redirect_to records_path
   end
 
-  def edit
+  def new
+    @record = Record.new
   end
 
   def create
@@ -20,14 +22,6 @@ class RecordsController < ApplicationController
       redirect_to @record
     else
       render 'new'
-    end
-  end
-
-  def update
-    if @record.update(record_params)
-      redirect_to @record
-    else
-      render 'edit'
     end
   end
 

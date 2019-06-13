@@ -1,12 +1,24 @@
 class Record < ApplicationRecord
+  include AASM
+
   belongs_to :rental
   belongs_to :bike
   belongs_to :station
 
-  before_validation :assign_rental, :assign_station, :assign_bike
-  before_save :assign_hours
+  before_create :assign_rental, :assign_station, :assign_bike, :assign_hours
+  after_update :release_bike
 
   validates :rental_code, presence: true, uniqueness: true
+  validates :state, presence: true
+
+  aasm column: :state do
+    state :actual, initial: true
+    state :finished, :delayed
+
+    event :finalize do
+      transitions from: [:actual, :delayed], to: :finished
+    end
+  end
 
   protected
 
@@ -46,5 +58,11 @@ class Record < ApplicationRecord
   def assign_hours
     hrs = self.rental.hours
     self.ends_at = DateTime.now + hrs.hours
+  end
+
+  def release_bike
+    if self.bike.may_dispose?
+      self.bike.dispose!
+    end
   end
 end

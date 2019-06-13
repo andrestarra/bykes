@@ -13,6 +13,9 @@ RailsAdmin.config do |config|
     configure :available_bikes do
       read_only true
     end
+    configure :state do
+      read_only true
+    end
     configure :rentals do
       read_only true
     end

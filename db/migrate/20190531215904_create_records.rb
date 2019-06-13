@@ -3,6 +3,7 @@ class CreateRecords < ActiveRecord::Migration[5.2]
     create_table :records do |t|
       t.datetime :ends_at
       t.string :rental_code
+      t.string :state
       t.belongs_to :rental, index: { unique: true }, foreign_key: true
       t.references :bike, foreign_key: true
       t.references :station, foreign_key: true

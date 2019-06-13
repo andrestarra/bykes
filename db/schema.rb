@@ -44,6 +44,7 @@ ActiveRecord::Schema.define(version: 2019_06_07_150210) do
   create_table "records", force: :cascade do |t|
     t.datetime "ends_at"
     t.string "rental_code"
+    t.string "state"
     t.bigint "rental_id"
     t.bigint "bike_id"
     t.bigint "station_id"

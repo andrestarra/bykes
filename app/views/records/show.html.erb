@@ -3,4 +3,9 @@
   <h3><%= @record.ends_at %></h3>
   <h1>Bike: </h1>
   <h3><%= @record.bike.serial_number %></h3>
+  <h1>State: </h1>
+  <h3><%= @record.state %></h3>
+  <% if @record.may_finalize? %>
+    <%= link_to 'Finalize', "/records/#{@record.id}/finalize", class: 'btn btn-success', method: :put %>
+  <% end %>
 </div>
