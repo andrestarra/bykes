@@ -1,12 +1,34 @@
+
 RailsAdmin.config do |config|
-  config.model Station do
-    configure :available_bikes do
+  config.model Bike do
+    configure :state do
+      read_only true
+    end
+    configure :records do
       read_only true
     end
   end
 
-  config.model Bike do
-    configure :state do
+  config.model Station do
+    configure :available_bikes do
+      read_only true
+    end
+    configure :rentals do
+      read_only true
+    end
+    configure :records do
+      read_only true
+    end
+    configure :bikes do
+      read_only true
+    end
+  end
+
+  config.model User do
+    configure :roles do
+      read_only true
+    end
+    configure :rentals do
       read_only true
     end
   end
