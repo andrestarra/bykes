@@ -1,22 +1,23 @@
-<h1>Your Rentals</h1>
-
-<table class="table w-50">
-  <thead>
-    <tr>
-      <th>Station</th>
-      <th>Code</th>
-      <th>Hours</th>
-      <th>Date</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @rentals.each do |rental| %>
+<div class="w-75">
+  <h1 class='float-left'>Your Rentals</h1>
+  <table class="table">
+    <thead>
       <tr>
-        <td><%= rental.station.address %></td>
-        <td><%= rental.code %></td>
-        <td><%= rental.hours %></td>
-        <td><%= rental.created_at %></td>
+        <th>Station</th>
+        <th>Code</th>
+        <th>Hours</th>
+        <th>Date</th>
       </tr>
-    <% end %>
-  </tbody>
+    </thead>
+    <tbody>
+      <% @rentals.each do |rental| %>
+        <tr>
+          <td><%= rental.station.address %></td>
+          <td><%= rental.code %></td>
+          <td><%= rental.hours %></td>
+          <td><%= rental.created_at %></td>
+        </tr>
+      <% end %>
+    </tbody>
 </table>
+</div>

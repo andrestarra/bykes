@@ -2,9 +2,11 @@ class RecordsController < ApplicationController
   before_action :find_record, except: [:index, :new, :create]
   def index
     @records = Record.all
+    touch_records
   end
 
   def show
+    @record.touch
   end
 
   def finalize
@@ -38,5 +40,11 @@ class RecordsController < ApplicationController
 
   def find_record
     @record = Record.find(params[:id])
+  end
+
+  def touch_records
+    @records.each do |record|
+      record.touch
+    end
   end
 end

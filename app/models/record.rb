@@ -5,8 +5,9 @@ class Record < ApplicationRecord
   belongs_to :bike
   belongs_to :station
 
-  before_create :assign_rental, :assign_station, :assign_bike, :assign_hours
+  before_validation :assign_rental, :assign_station, :assign_bike, :assign_hours, on: :create
   after_update :release_bike
+  after_touch :verify_state
 
   validates :rental_code, presence: true, uniqueness: true
   validates :state, presence: true
@@ -17,6 +18,10 @@ class Record < ApplicationRecord
 
     event :finalize do
       transitions from: [:actual, :delayed], to: :finished
+    end
+    
+    event :delay do
+      transitions from: :actual, to: :delay
     end
   end
 
@@ -45,7 +50,7 @@ class Record < ApplicationRecord
   end
 
   def bike_station
-    Bike.bikes_by_station(self.station_id).first
+    Bike.bikes_by_station(self.station_id).available.first
   end
 
   def assign_bike
@@ -61,8 +66,14 @@ class Record < ApplicationRecord
   end
 
   def release_bike
-    if self.bike.may_dispose?
+    if self.bike.may_dispose? && self.state == 'finished' 
       self.bike.dispose!
+    end
+  end
+
+  def verify_state
+    if self.ends_at.past? && self.state != 'finished'
+      self.delay!
     end
   end
 end
