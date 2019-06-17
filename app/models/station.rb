@@ -5,6 +5,6 @@ class Station < ApplicationRecord
   has_many :records
   has_many :bikes
 
-  validates :address, presence: true, uniqueness: true
+  validates :address, presence: true, uniqueness: true, length: { in: 10..30 }
   validates :available_bikes, presence: true
 end

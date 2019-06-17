@@ -8,7 +8,7 @@ class Rental < ApplicationRecord
   before_save :unique_code
 
   validates :code, uniqueness: true
-  validates :hours, presence: true
+  validates :hours, presence: true, numericality: { greater_than: 0, less_than: 25 }
 
   scope :my_rentals, ->(current_user) { where(user_id: current_user.id) }
 

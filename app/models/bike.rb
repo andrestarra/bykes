@@ -7,7 +7,8 @@ class Bike < ApplicationRecord
   after_save :update_counter_cache
   after_destroy :update_counter_cache
 
-  validates :serial_number, presence: true
+  validates :serial_number, presence: true, uniqueness: true, length: { is: 6 }
+  validates :state, presence: true
 
   scope :bikes_by_station, ->(station) { where(station_id: station) }
 
