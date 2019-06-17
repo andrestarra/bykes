@@ -1,4 +1,6 @@
 class Rental < ApplicationRecord
+  resourcify
+  
   belongs_to :user
   belongs_to :station
   has_one :record, dependent: :destroy

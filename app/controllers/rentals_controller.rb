@@ -1,4 +1,6 @@
 class RentalsController < ApplicationController
+  load_and_authorize_resource
+  
   def index
     @rentals = Rental.my_rentals(current_user)
   end

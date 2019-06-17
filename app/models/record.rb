@@ -1,4 +1,5 @@
 class Record < ApplicationRecord
+  resourcify
   include AASM
 
   belongs_to :rental
@@ -21,7 +22,7 @@ class Record < ApplicationRecord
     end
     
     event :delay do
-      transitions from: :actual, to: :delay
+      transitions from: :actual, to: :delayed
     end
   end
 
@@ -72,7 +73,7 @@ class Record < ApplicationRecord
   end
 
   def verify_state
-    if self.ends_at.past? && self.state != 'finished'
+    if self.ends_at.past? && self.state == 'actual' 
       self.delay!
     end
   end

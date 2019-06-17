@@ -1,7 +1,9 @@
 class RecordsController < ApplicationController
   before_action :find_record, except: [:index, :new, :create]
+  load_and_authorize_resource
+  
   def index
-    @records = Record.all
+    @records = Record.order(:state)
     touch_records
   end
 

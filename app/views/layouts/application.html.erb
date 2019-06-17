@@ -13,12 +13,23 @@
   <body>
     <%- if user_signed_in? || admin_signed_in? %>
       <nav class="navbar navbar-light bg-light">
-        <%= link_to 'Bikes', root_path %>
+        <div class="nav">
+          <li class="nav-item">
+            <%= link_to 'Bikes', root_path, class: 'nav-link' %>
+          </li>
+          <% if can? :read, Record %>
+            <li class="nav-item">
+              <%= link_to 'Records', records_path, class: 'nav-link' %>
+            </li>
+          <% end %>
+        </div>
         <ul class="nav justify-content-end">
           <%- if user_signed_in? %>
-            <li class="nav-item">
-              <%= link_to 'My rentals', rentals_path, class: 'btn btn-info btn-sm m-1' %>
-            </li>
+            <% if can? :read, Rental %>
+              <li class="nav-item">
+                <%= link_to 'My rentals', rentals_path, class: 'btn btn-info btn-sm m-1' %>
+              </li>
+            <% end %>
             <li class="nav-item">
               <%= link_to 'Edit profile', edit_user_registration_path, class: 'btn btn-primary btn-sm m-1' %>
             </li>
