@@ -8,7 +8,7 @@ class RecordsController < ApplicationController
   end
 
   def show
-    @record.touch
+    @record.touch if @record.actual?
   end
 
   def finalize
@@ -46,7 +46,7 @@ class RecordsController < ApplicationController
 
   def touch_records
     @records.each do |record|
-      record.touch
+      record.touch if record.actual?
     end
   end
 end
