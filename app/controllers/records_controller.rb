@@ -27,14 +27,17 @@ class RecordsController < ApplicationController
     @record = Record.new(record_params)
     if @record.save
       redirect_to @record
+      flash[:notice] = 'Record was created successfully.'
     else
       render 'new'
+      flash[:alert] = 'Record could not be created.'
     end
   end
 
   def destroy
     @record.destroy
     redirect_to records_path
+    flash[:error] = 'Record was destroyed successfully.'
   end
 
   private

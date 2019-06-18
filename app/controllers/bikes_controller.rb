@@ -12,7 +12,6 @@ class BikesController < ApplicationController
 
   def create
     @bike = Bike.new(bike_params)
-
     if @bike.save
       redirect_to @bike
     else

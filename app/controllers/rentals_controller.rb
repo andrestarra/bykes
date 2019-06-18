@@ -24,8 +24,10 @@ class RentalsController < ApplicationController
 
     if @rental.save
       redirect_to station_rental_path(@station, @rental)
+      flash[:notice] = 'Rental was created successfully.'
     else
       render 'show'
+      flash[:alert] = 'Rental could not be created.'
     end
   end
 
