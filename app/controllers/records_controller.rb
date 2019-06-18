@@ -1,7 +1,10 @@
+# frozen_string_literal: true
+
+# Records Controller
 class RecordsController < ApplicationController
-  before_action :find_record, except: [:index, :new, :create]
+  before_action :find_record, except: %i[index new create]
   load_and_authorize_resource
-  
+
   def index
     @records = Record.order(:state)
     touch_records

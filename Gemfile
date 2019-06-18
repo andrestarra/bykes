@@ -73,6 +73,6 @@ gem 'devise'
 gem 'jquery-rails'
 gem 'rails_admin', '~> 1.3'
 gem 'rails_admin_aasm'
-gem "rolify"
+gem 'rolify'
 gem 'rubocop', '~> 0.70.0', require: false
 gem 'simple_form'

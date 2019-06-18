@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+# User Model
 class User < ApplicationRecord
   rolify
   after_create :assign_default_role
@@ -14,6 +17,6 @@ class User < ApplicationRecord
   protected
 
   def assign_default_role
-    self.add_role(:default) if self.roles.blank?
+    add_role(:default) if roles.blank?
   end
 end

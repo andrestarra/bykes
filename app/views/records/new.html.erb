@@ -2,6 +2,17 @@
 
 <div class="container w-50">
   <%= simple_form_for @record do |f| %>
+    <% if @record.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@record.errors.count, "error") %> prohibited this record from being saved:</h2>
+    
+        <ul>
+        <% @record.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
     <%= f.input :rental_code %>
     <%= f.button :submit, class: 'btn btn-primary' %>
   <% end %>

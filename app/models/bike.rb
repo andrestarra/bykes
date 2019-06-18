@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+# Bike model
 class Bike < ApplicationRecord
   include AASM
 
@@ -26,7 +29,7 @@ class Bike < ApplicationRecord
   end
 
   def update_counter_cache
-    available_bikes = Bike.where(state: 'available', station_id: self.station.id).count
-    self.station.update_attributes(available_bikes: available_bikes)
+    available_bikes = Bike.where(state: 'available', station_id: station.id).count
+    station.update_attributes(available_bikes: available_bikes)
   end
 end

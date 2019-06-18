@@ -1,6 +1,9 @@
+# frozen_string_literal: true
+
+# Rentals Controller
 class RentalsController < ApplicationController
   load_and_authorize_resource
-  
+
   def index
     @rentals = Rental.my_rentals(current_user)
   end
@@ -20,7 +23,7 @@ class RentalsController < ApplicationController
     @rental.user_id = current_user.id
 
     if @rental.save
-      redirect_to station_rental_path(@station, @rental), success: 'Rental was successfully!'
+      redirect_to station_rental_path(@station, @rental)
     else
       render 'show'
     end

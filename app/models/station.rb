@@ -1,6 +1,9 @@
+# frozen_string_literal: true
+
+# Station Model
 class Station < ApplicationRecord
   resourcify
-  
+
   has_many :rentals, dependent: :destroy
   has_many :records
   has_many :bikes

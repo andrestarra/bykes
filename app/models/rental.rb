@@ -1,10 +1,13 @@
+# frozen_string_literal: true
+
+# Rental Model
 class Rental < ApplicationRecord
   resourcify
-  
+
   belongs_to :user
   belongs_to :station
   has_one :record, dependent: :destroy
-  
+
   before_save :unique_code
 
   validates :code, uniqueness: true
