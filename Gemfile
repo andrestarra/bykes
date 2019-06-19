@@ -63,6 +63,7 @@ group :test do
   # Easy installation and use of chromedriver to run system tests with Chrome
   gem 'chromedriver-helper'
   gem 'simplecov', require: false
+  gem 'shoulda-matchers'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
@@ -73,6 +74,7 @@ gem 'aasm'
 gem 'bootstrap', '~> 4.3.1'
 gem 'cancancan'
 gem 'devise'
+gem 'faker', git: 'https://github.com/stympy/faker.git', branch: 'master'
 gem 'jquery-rails'
 gem 'rails_admin', '~> 1.3'
 gem 'rails_admin_aasm'
