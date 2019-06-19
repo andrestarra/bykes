@@ -11,12 +11,9 @@
     </thead>
     <tbody>
       <% @rentals.each do |rental| %>
-        <tr>
-          <td><%= rental.station.address %></td>
-          <td><%= rental.code %></td>
-          <td><%= rental.hours %></td>
-          <td><%= rental.created_at %></td>
-        </tr>
+        <% cache rental do %>
+          <%= render rental %>
+        <% end %>
       <% end %>
     </tbody>
 </table>

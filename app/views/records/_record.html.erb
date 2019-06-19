@@ -1,0 +1,8 @@
+<tr>
+  <td><%= record.rental_code %></td>
+  <td><%= record.ends_at %></td>
+  <td><%= record.bike.serial_number %></td>
+  <td><%= record.station.address %></td>
+  <td><%= record.state %></td>
+  <td><%= link_to 'Show', record_path(record), class: 'btn btn-success btn-sm' %></td>
+</tr>

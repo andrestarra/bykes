@@ -10,15 +10,9 @@
   </thead>
   <tbody>
     <% @stations.each do |station| %>
-      <tr>
-        <td><%= station.address %></td>
-        <td><%= station.available_bikes %></td>
-        <% if station.available_bikes > 0 %>
-          <td><%= link_to 'Select', new_station_rental_path(station), class: 'btn btn-success btn-sm' %></td>
-        <% else %>
-          <td></td>
-        <% end %>
-      </tr>
+      <% cache station do %>
+        <%= render station %>
+      <% end %>
     <% end %>
   </tbody>
 </table>
