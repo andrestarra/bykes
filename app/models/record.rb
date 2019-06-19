@@ -15,7 +15,6 @@ class Record < ApplicationRecord
   after_touch :verify_state
 
   validates :rental_code, presence: true, uniqueness: true
-  validates :ends_at, presence: true
 
   aasm column: :state do
     state :actual, initial: true
