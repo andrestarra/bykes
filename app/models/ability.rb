@@ -6,6 +6,7 @@ class Ability
 
   def initialize(user)
     user ||= User.new
+    can :read, Station
     if user.has_role? :admin_station
       can :manage, Record
     else
