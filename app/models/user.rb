@@ -8,7 +8,8 @@ class User < ApplicationRecord
   has_many :rentals, dependent: :destroy
 
   validates :first_name, :last_name, presence: true, length: { in: 3..15 }
-  validates :identification, presence: true, uniqueness: true, length: { in: 8..12 }
+  validates :identification, presence: true, uniqueness: { case_sensitive: false },
+                             numericality: true, length: { in: 8..12 }
   validates :address, presence: true, length: { in: 10..30 }
 
   devise :database_authenticatable, :registerable,
