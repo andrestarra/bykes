@@ -10,7 +10,7 @@ class RentalsController < ApplicationController
 
   def show
     @station = Station.find(params[:station_id])
-    @rental = @station.rentals.find(params[:id])
+    @rental = @station.rentals.my_rentals(current_user).find(params[:id])
   end
 
   def new

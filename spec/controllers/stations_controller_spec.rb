@@ -40,22 +40,20 @@ RSpec.describe StationsController, type: :controller do
   describe '#show' do
     let(:station) { create(:station) }
     
-    context 'as an authorized user' do
-      subject { get :show, params: { id: station.id } }
+    subject { get :show, params: { id: station.id } }
 
-      before do
-        sign_in user
-        subject
-      end
+    before do
+      sign_in user
+      subject
+    end
 
-      it 'responds successfully' do
-        expect(response).to be_successful
-      end
+    it 'responds successfully' do
+      expect(response).to be_successful
+    end
 
-      it 'with a nonexistent station' do
-        expect { get :show, params: { id: 500 } }
-          .to raise_error(ActiveRecord::RecordNotFound)
-      end
+    it 'with a nonexistent station' do
+      expect { get :show, params: { id: 500 } }
+        .to raise_error(ActiveRecord::RecordNotFound)
     end
   end
 end

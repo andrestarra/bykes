@@ -17,7 +17,6 @@ RSpec.describe Record, type: :model do
     subject { build(:record, rental_code: rental.code) }
     
     it { should validate_presence_of(:rental_code) }
-    # it { should validate_presence_of(:rental_code) }
     it { should validate_uniqueness_of(:rental_code) }
   end
 end

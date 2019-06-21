@@ -6,5 +6,9 @@ FactoryBot.define do
     hours { rand(1..24) }
     station
     user
+
+    trait :invalid do
+      hours { nil }
+    end
   end
 end
