@@ -3,9 +3,10 @@
 # User Model
 class User < ApplicationRecord
   rolify
-  after_create :assign_default_role
 
   has_many :rentals, dependent: :destroy
+
+  after_create :assign_default_role
 
   validates :first_name, :last_name, presence: true, length: { in: 3..15 }
   validates :identification, presence: true, uniqueness: { case_sensitive: false },
