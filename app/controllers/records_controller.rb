@@ -16,6 +16,7 @@ class RecordsController < ApplicationController
 
   def finalize
     @record.finalize!
+    @record.release_bike
     redirect_to records_path
   end
 

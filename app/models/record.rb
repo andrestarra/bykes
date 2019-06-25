@@ -75,7 +75,7 @@ class Record < ApplicationRecord
   end
 
   def release_bike
-    bike.dispose! if bike.may_dispose? && state == 'finished'
+    bike.dispose! if bike.may_dispose?
   end
 
   def verify_state
