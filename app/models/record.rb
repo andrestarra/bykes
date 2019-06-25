@@ -29,6 +29,10 @@ class Record < ApplicationRecord
     end
   end
 
+  def release_bike
+    bike.dispose! if bike.may_dispose?
+  end
+
   protected
 
   def rental_code_exist?
@@ -72,10 +76,6 @@ class Record < ApplicationRecord
 
   def assign_hours
     self.ends_at = DateTime.now + rental.hours.hours if rental_code_exist?
-  end
-
-  def release_bike
-    bike.dispose! if bike.may_dispose?
   end
 
   def verify_state

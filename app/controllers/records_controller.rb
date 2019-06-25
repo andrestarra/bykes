@@ -35,12 +35,6 @@ class RecordsController < ApplicationController
     end
   end
 
-  def destroy
-    @record.destroy
-    redirect_to records_path
-    flash[:error] = 'Record was destroyed successfully.'
-  end
-
   private
 
   def record_params

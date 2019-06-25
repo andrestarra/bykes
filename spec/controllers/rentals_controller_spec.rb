@@ -21,7 +21,7 @@ RSpec.describe RentalsController, type: :controller do
         end
       end
 
-      it 'empty arrat when there is no data' do
+      it 'empty array when there is no data' do
         expect(assigns(:rentals)).to be_empty
       end
 
@@ -61,9 +61,7 @@ RSpec.describe RentalsController, type: :controller do
 
     context 'as an unauthorized user' do
       let(:other_user) { create(:user) }
-      before do
-        sign_in other_user
-      end
+      before { sign_in other_user }
 
       it 'record not found to an unauthorized user' do
         expect { get :show, params: { station_id: rental.station_id, id: rental.id } }

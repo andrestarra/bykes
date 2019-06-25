@@ -8,5 +8,9 @@ FactoryBot.define do
     address { Faker::Address.street_address }
     email { Faker::Internet.unique.email }
     password { Faker::Alphanumeric.alphanumeric(8) }
+
+    factory :admin_station do
+      after(:create) { |user| user.add_role(:admin_station) }
+    end
   end
 end
