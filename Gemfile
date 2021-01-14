@@ -71,7 +71,7 @@ gem 'cancancan'
 gem 'devise'
 gem 'faker', git: 'https://github.com/stympy/faker.git', branch: 'master'
 gem 'jquery-rails'
-gem 'rails_admin', '~> 1.3'
+gem 'rails_admin', '~> 1.4'
 gem 'rails_admin_aasm'
 gem 'rolify'
 gem 'rubocop', '~> 0.70.0', require: false
